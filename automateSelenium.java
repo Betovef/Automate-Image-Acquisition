@@ -56,7 +56,6 @@ public class automateSelenium {
 				sb.append("\r\n");
 				i++;
 			}
-			
 			pw.write(sb.toString());
 			pw.close();
 			
@@ -66,15 +65,15 @@ public class automateSelenium {
 		
 	
 		
-		// automating... 
-//		while(i<addresses.length){
-//		elem = driver.findElement(By.id("searchboxinput"));
-//		elem.sendKeys(addresses[i]);
-//		elem.sendKeys(Keys.ENTER);
-//		Thread.sleep(2000);
-//		driver.findElement(By.name("q")).clear();
-//		i++;
-//		}
+//		 automating... 
+		while(i<addresses.length){
+		elem = driver.findElement(By.id("searchboxinput"));
+		elem.sendKeys(addresses[i]);
+		elem.sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		driver.findElement(By.name("q")).clear();
+		i++;
+		}
 	}
 
 }
