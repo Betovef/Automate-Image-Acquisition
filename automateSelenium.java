@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import org.openqa.selenium.By;
@@ -16,36 +18,63 @@ public class automateSelenium {
 		//set up scanner
 		Scanner scanIn = null;
 		String InputLine = "";
-		String[] addresses = new String[886];
+		String[] addresses = new String[886]; //size of the number of addresses
 		String xfileLocation = "C:\\Users\\Alberto\\Desktop\\REU\\PythonProject\\Automate-Image-Acquisition\\addresses.csv";
 		
 		scanIn = new Scanner(new BufferedReader(new FileReader(xfileLocation)));
 		
+		// importing data from csv file to a string array
 		int i = 0;
 		while(scanIn.hasNextLine()) {
 			InputLine = scanIn.nextLine();
 			addresses[i] = InputLine;
-			System.out.println(addresses[i]);
+			System.out.println(addresses[i]); //we don't need to print 
 			i++;
 		}
 		
+		// setting up web driver
 		System.setProperty("webdriver.chrome.driver", "C:\\webdrivers\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-//		String[] addresses = {"430 West 6th Street Merced","905 West 8th Street Merced","909 West 8th Street Merced","945 West 8th Street Merced","956 West 8th Street Merced"  };
-		
-		driver.get("https://images.google.com/");
+
+		driver.get("https://www.google.com/maps");
 //		driver.get("https://www.redfin.com/");
 //		driver.get("https://www.zillow.com/");
+		
 		WebElement elem = null;
 		i = 0;
-		while(i<addresses.length){
-		elem = driver.findElement(By.name("q"));
-		elem.sendKeys(addresses[i]);
-		elem.sendKeys(Keys.ENTER);
-		driver.findElement(By.name("q")).clear();
-		i++;
+		
+		// setting up csv file writer
+		
+		try {
+			PrintWriter pw = new PrintWriter(new File("C:\\Users\\Alberto\\Desktop\\REU\\PythonProject\\Automate-Image-Acquisition\\ImagesDatasetTest1.csv"));
+			StringBuilder sb = new StringBuilder();
+			
+//			sb.append("Address");
+//			sb.append("\r\n");
+			while(i<addresses.length) {
+				sb.append(addresses[i]);
+				sb.append("\r\n");
+				i++;
+			}
+			
+			pw.write(sb.toString());
+			pw.close();
+			
+		} catch (Exception e) {
+			
 		}
-		Thread.sleep(10000);
+		
+	
+		
+		// automating... 
+//		while(i<addresses.length){
+//		elem = driver.findElement(By.id("searchboxinput"));
+//		elem.sendKeys(addresses[i]);
+//		elem.sendKeys(Keys.ENTER);
+//		Thread.sleep(2000);
+//		driver.findElement(By.name("q")).clear();
+//		i++;
+//		}
 	}
 
 }
