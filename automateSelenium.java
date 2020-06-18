@@ -13,6 +13,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class automateSelenium {
 
@@ -38,6 +39,7 @@ public class automateSelenium {
 		// setting up web driver
 		System.setProperty("webdriver.chrome.driver", "C:\\webdrivers\\chromedriver.exe"); //path to where the chrome driver is located
 		WebDriver driver = new ChromeDriver();
+		Actions act = new Actions(driver);
 
 		driver.get("https://www.google.com/maps");
 //		driver.get("https://www.redfin.com/");
@@ -73,9 +75,20 @@ public class automateSelenium {
 				elem = driver.findElement(By.id("searchboxinput"));
 				elem.sendKeys(addresses[i]);
 				elem.sendKeys(Keys.ENTER);
-				Thread.sleep(3500);
-				elem = driver.findElement(By.xpath("/html/body/jsl/div[3]/div[9]/div[8]/div/div[1]/div/div/div[1]/div[1]/button/img")); //xpath can be obtained form inspect
-				System.out.println(elem.getAttribute("src"));
+				Thread.sleep(2500);
+				
+				//Code to obtain image address
+//				elem = driver.findElement(By.xpath("/html/body/jsl/div[3]/div[9]/div[8]/div/div[1]/div/div/div[1]/div[1]/button/img")); //xpath can be obtained form inspect
+//				System.out.println(elem.getAttribute("src"));
+				
+				//Code to obtain text from web 
+				act.moveToElement(driver.findElement(By.xpath("/html/body/jsl/div[3]/div[9]/div[8]/div/div[1]/div/div/div[1]/div[1]/button/img"))).click().build().perform();
+				Thread.sleep(3000);
+				elem = driver.findElement(By.xpath("/html/body/jsl/div[3]/div[9]/div[25]/div/div[1]/div/div/span[7]/span/span/span"));
+				System.out.println(elem.getText());
+				
+				act.moveToElement(driver.findElement(By.xpath("/html/body/jsl/div[3]/div[9]/div[8]/div/div[1]/div/div/div[1]/button[1]/div/img"))).click().build().perform();
+				Thread.sleep(2000);
 				driver.findElement(By.name("q")).clear();
 			} catch(NoSuchElementException e) {
 				System.out.println("Element does not exist");
