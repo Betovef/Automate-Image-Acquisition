@@ -1,15 +1,15 @@
 # Automate-Image-Acquisition
 
-##Description
+**Description**
 - This program will automatize the acquisition of image(it can be used to acquire any other information from the web) addresses using java and Selenium webdriver. This program is particularly useful for the construction of large datasets of images, metadata, etc. The idea behind this project is automate the image acquisition of houses in the city of Merced and use it to train a CNN to analyze architectural styles. 
 
-##Prerequisites
+**Prerequisites**
 - Install newest version of ChromeDriver 
 - Install Java Development Kit (jdk 13.0.1 or above)
 - Download Selenium Client & Webdriver for Java(stable version)
 - IDE of preference (Eclipse is encouraged) 
 
-##Installation
+**Installation**
 - Create a folder called webdrivers in the Local Disk
 - Extract the zip file chromedriver
 - Move the chromedriver application to the chromedrivers directory
@@ -25,14 +25,14 @@
 5. Add all the JAR files inside and outside the libs folder
 6. Apply and Close
 
-##Contributing
+**Contributing**
 - https://github.com/Betovef/Automate-Image-Acquisition/issues
 
-##License
+**License**
 - Open Source
 
-##Citation
+**Citation**
 - Alberto Valle. (2020). Automate Data Acquisition with Selenium (Version 1.0). http://doi.org/10.5281/zenodo.3899601
 
-##Contact
+**Contact**
 - avalle6@ucmerced.edu
